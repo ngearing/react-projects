@@ -9,6 +9,8 @@ export default function TickTack() {
 	// set players turn
 	const [xIsNext, setXIsNext] = useState(true);
 
+	let status = "Players turn: " + (xIsNext ? "X" : "O");
+
 	function handleClick(i) {
 		// check square for value
 		if (squares[i]) {
@@ -22,7 +24,8 @@ export default function TickTack() {
 	}
 
 	return (
-		<>
+		<div className="board">
+			<div className="status">{status}</div>
 			<div className="board-row">
 				<Square
 					value={squares[0]}
@@ -65,7 +68,7 @@ export default function TickTack() {
 					onSquareClick={() => handleClick(8)}
 				/>
 			</div>
-		</>
+		</div>
 	);
 }
 
