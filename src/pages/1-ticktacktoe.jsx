@@ -4,6 +4,15 @@ import "./1-style.css";
 // https://react.dev/learn/tutorial-tic-tac-toe
 
 export default function TickTack() {
+	return (
+		<div className="game">
+			<h1>Tick Tack Toe</h1>
+			<Board />
+		</div>
+	);
+}
+
+function Board() {
 	// setup state for each square
 	const [squares, setSquares] = useState(Array(9).fill(null));
 	// set players turn
@@ -34,8 +43,10 @@ export default function TickTack() {
 
 	return (
 		<div className="board">
-			<div className="status">{status}</div>
-			{winner && <button onClick={resetBoard}>Reset</button>}
+			<div className="status">
+				{status}
+				{winner && <button onClick={resetBoard}>Reset</button>}
+			</div>
 			<div className="board-row">
 				<Square
 					value={squares[0]}

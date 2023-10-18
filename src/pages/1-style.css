@@ -1,11 +1,18 @@
 .board {
     margin: 2rem auto;
-    max-width: 640px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .status {
     text-align: center;
     font-weight: bold;
+    margin: 0 0 2rem;
+}
+
+.status button {
+    margin-inline: 1rem;
 }
 
 .board-row {}
