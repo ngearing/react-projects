@@ -9,11 +9,15 @@ export default function TickTack() {
 	// set players turn
 	const [xIsNext, setXIsNext] = useState(true);
 
+	const winner = calculateWinner(squares);
 	let status = "Players turn: " + (xIsNext ? "X" : "O");
+	if (winner) {
+		status = `Player ${winner} wins!`;
+	}
 
 	function handleClick(i) {
-		// check square for value
-		if (squares[i]) {
+		// check square for value & check for winner
+		if (squares[i] || calculateWinner(squares)) {
 			return;
 		}
 
@@ -78,4 +82,28 @@ function Square({ value, onSquareClick }) {
 			{value}
 		</button>
 	);
+}
+
+function calculateWinner(squares) {
+	const lines = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6],
+	];
+	for (let i = 0; i < lines.length; i++) {
+		const [a, b, c] = lines[i];
+		if (
+			squares[a] &&
+			squares[a] === squares[b] &&
+			squares[a] === squares[c]
+		) {
+			return squares[a];
+		}
+	}
+	return null;
 }
