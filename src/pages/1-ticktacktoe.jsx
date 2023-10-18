@@ -23,9 +23,13 @@ export default function TickTack() {
 
 function Board({xIsNext, squares, handlePlay}) {
 	const winner = calculateWinner(squares);
+	let noTurns = squares.filter((a,c) => a === null).length === 0;
 	let status = "Players turn: " + (xIsNext ? "X" : "O");
 	if (winner) {
 		status = `Player ${winner} wins!`;
+	}
+	if ( noTurns && !winner){
+		status = 'No Winner!';
 	}
 
 	function handleClick(i) {
@@ -47,7 +51,7 @@ function Board({xIsNext, squares, handlePlay}) {
 		<div className="board">
 			<div className="status">
 				{status}
-				{winner && <button onClick={resetBoard}>Reset</button>}
+				{(winner || noTurns) && <button onClick={resetBoard}>Reset</button>}
 			</div>
 			<div className="board-row">
 				<Square
