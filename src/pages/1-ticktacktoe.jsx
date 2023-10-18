@@ -27,9 +27,15 @@ export default function TickTack() {
 		setXIsNext(!xIsNext); // switch player
 	}
 
+	function resetBoard() {
+		setSquares(Array(9).fill(null));
+		setXIsNext(true);
+	}
+
 	return (
 		<div className="board">
 			<div className="status">{status}</div>
+			{winner && <button onClick={resetBoard}>Reset</button>}
 			<div className="board-row">
 				<Square
 					value={squares[0]}
