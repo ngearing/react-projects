@@ -4,20 +4,24 @@ import "./1-style.css";
 // https://react.dev/learn/tutorial-tic-tac-toe
 
 export default function TickTack() {
+	const [xIsNext, setXIsNext] = useState(true);
+	const [history, setHistory] = useState([Array(9).fill(null)]);
+	const currentSquares = history[history.length - 1];
+
+	function handlePlay(squares) {
+		setXIsNext(!xIsNext);
+		setHistory([...history, squares]);
+	}
+
 	return (
 		<div className="game">
 			<h1>Tick Tack Toe</h1>
-			<Board />
+			<Board xIsNext={xIsNext} squares={currentSquares} handlePlay={handlePlay} />
 		</div>
 	);
 }
 
-function Board() {
-	// setup state for each square
-	const [squares, setSquares] = useState(Array(9).fill(null));
-	// set players turn
-	const [xIsNext, setXIsNext] = useState(true);
-
+function Board({xIsNext, squares, handlePlay}) {
 	const winner = calculateWinner(squares);
 	let status = "Players turn: " + (xIsNext ? "X" : "O");
 	if (winner) {
@@ -32,13 +36,11 @@ function Board() {
 
 		const nextSquares = squares.slice();
 		nextSquares[i] = xIsNext ? "X" : "O";
-		setSquares(nextSquares);
-		setXIsNext(!xIsNext); // switch player
+		handlePlay(nextSquares);
 	}
 
 	function resetBoard() {
-		setSquares(Array(9).fill(null));
-		setXIsNext(true);
+		handlePlay(Array(9).fill(null))
 	}
 
 	return (
