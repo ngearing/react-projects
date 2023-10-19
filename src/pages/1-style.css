@@ -1,32 +1,33 @@
 .board {
-    margin: 2rem auto;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+	margin: 2rem auto;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
 }
 
 .status {
-    text-align: center;
-    font-weight: bold;
-    margin: 0 0 2rem;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 0 2rem;
 }
 
 .status button {
-    margin-inline: 1rem;
+	margin-inline: 1rem;
 }
 
-.board-row {}
+.board-row {
+}
 
 .square {
-    background-color: white;
-    padding: 1rem;
-    margin: 0;
-    font-size: 2rem;
-    font-weight: bold;
-    width: 5rem;
-    height: 5rem;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
+	background-color: white;
+	padding: 1rem;
+	margin: 0;
+	font-size: 2rem;
+	font-weight: bold;
+	width: 5rem;
+	height: 5rem;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
 }

@@ -16,20 +16,25 @@ export default function TickTack() {
 	return (
 		<div className="game">
 			<h1>Tick Tack Toe</h1>
-			<Board xIsNext={xIsNext} squares={currentSquares} handlePlay={handlePlay} />
+			<Board
+				xIsNext={xIsNext}
+				squares={currentSquares}
+				handlePlay={handlePlay}
+			/>
+			<BoardInfo history={history} handlePlay={handlePlay} />
 		</div>
 	);
 }
 
-function Board({xIsNext, squares, handlePlay}) {
+function Board({ xIsNext, squares, handlePlay }) {
 	const winner = calculateWinner(squares);
-	let noTurns = squares.filter((a,c) => a === null).length === 0;
+	let noTurns = squares.filter((a, c) => a === null).length === 0;
 	let status = "Players turn: " + (xIsNext ? "X" : "O");
 	if (winner) {
 		status = `Player ${winner} wins!`;
 	}
-	if ( noTurns && !winner){
-		status = 'No Winner!';
+	if (noTurns && !winner) {
+		status = "No Winner!";
 	}
 
 	function handleClick(i) {
@@ -44,7 +49,7 @@ function Board({xIsNext, squares, handlePlay}) {
 	}
 
 	function resetBoard() {
-		handlePlay(Array(9).fill(null))
+		handlePlay(Array(9).fill(null));
 	}
 
 	return (
@@ -54,47 +59,35 @@ function Board({xIsNext, squares, handlePlay}) {
 				{(winner || noTurns) && <button onClick={resetBoard}>Reset</button>}
 			</div>
 			<div className="board-row">
-				<Square
-					value={squares[0]}
-					onSquareClick={() => handleClick(0)}
-				/>
-				<Square
-					value={squares[1]}
-					onSquareClick={() => handleClick(1)}
-				/>
-				<Square
-					value={squares[2]}
-					onSquareClick={() => handleClick(2)}
-				/>
+				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
+				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
+				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />
 			</div>
 			<div className="board-row">
-				<Square
-					value={squares[3]}
-					onSquareClick={() => handleClick(3)}
-				/>
-				<Square
-					value={squares[4]}
-					onSquareClick={() => handleClick(4)}
-				/>
-				<Square
-					value={squares[5]}
-					onSquareClick={() => handleClick(5)}
-				/>
+				<Square value={squares[3]} onSquareClick={() => handleClick(3)} />
+				<Square value={squares[4]} onSquareClick={() => handleClick(4)} />
+				<Square value={squares[5]} onSquareClick={() => handleClick(5)} />
 			</div>
 			<div className="board-row">
-				<Square
-					value={squares[6]}
-					onSquareClick={() => handleClick(6)}
-				/>
-				<Square
-					value={squares[7]}
-					onSquareClick={() => handleClick(7)}
-				/>
-				<Square
-					value={squares[8]}
-					onSquareClick={() => handleClick(8)}
-				/>
+				<Square value={squares[6]} onSquareClick={() => handleClick(6)} />
+				<Square value={squares[7]} onSquareClick={() => handleClick(7)} />
+				<Square value={squares[8]} onSquareClick={() => handleClick(8)} />
 			</div>
+		</div>
+	);
+}
+
+function BoardInfo({ history, handlePlay }) {
+	return (
+		<div className="info">
+			<ol>
+				{history.map((step, move) => {
+					const desc = step ? `Go to move #${move + 1}` : "Go to game start";
+					<li>
+						<button>{desc}</button>
+					</li>;
+				})}
+			</ol>
 		</div>
 	);
 }
@@ -120,11 +113,7 @@ function calculateWinner(squares) {
 	];
 	for (let i = 0; i < lines.length; i++) {
 		const [a, b, c] = lines[i];
-		if (
-			squares[a] &&
-			squares[a] === squares[b] &&
-			squares[a] === squares[c]
-		) {
+		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
 			return squares[a];
 		}
 	}
