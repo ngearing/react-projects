@@ -1,0 +1,21 @@
+.dark-mode {
+	text-align: center;
+}
+
+body.dark-mode {
+	background-color: darkslategray;
+}
+
+.buttons button {
+	padding: 1rem;
+	border-radius: 2px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.button-dark {
+	background-color: black;
+	color: white;
+}
+
+.button-light {}
