@@ -1,8 +1,12 @@
-# React + Vite
+This is a dumping ground for my various React trials.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. [Tick-Tack-Toe](src/pages/1-ticktacktoe.jsx)
+2. [Colour Renderer](src/pages/2-colorRenderer.jsx)
+3. [Dark Mode](src/pages/3-darkMode.jsx)
+4. Random Quotes
+5. Markdown Preview
+6. Sound Maker - e.g. https://drum-machine.freecodecamp.rocks
+7. Pomodoro Time
+8. Calculator
+9. Weather API
+10. TODO List
